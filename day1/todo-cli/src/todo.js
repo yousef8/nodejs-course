@@ -1,6 +1,7 @@
 import {Command} from 'commander';
 // const {Command} = require('commander');
 import {readTodos, writeTodos} from "./db.js"
+import { printTodo } from './utils.js';
 
 const program = new Command();
 
@@ -35,8 +36,15 @@ program.command("add")
     console.log(
       `⏰ Created: ${new Date(newTodo.createdAt).toLocaleDateString()}\n`
     );
-
   });
+
+program
+  .command('list')
+  .description("List all items")
+  .action(async () => {
+    const todos = await readTodos();
+    todos.forEach(printTodo)
+})
 
 program.parse();
 
