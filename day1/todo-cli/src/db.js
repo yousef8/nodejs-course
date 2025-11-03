@@ -1,6 +1,6 @@
 import fs from "fs";
 
-const TODOS_FILE = "./todos.json";
+const TODOS_FILE = "src/todos.json";
 
 export const readTodos = async () => {
     const data = await fs.promises.readFile(TODOS_FILE, "utf-8") || "[]";
