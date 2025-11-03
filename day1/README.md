@@ -3,6 +3,7 @@
 ## Modules
 
 - You need to set `"type": "module"` in package.json, to start using es6 modules;
+- Module is just a unit of code, and in js it's just a file with the `export` keyword inside it.
 
 ## Default Import
 
