@@ -2,6 +2,8 @@
 
 ## Modules
 
+- You need to set `"type": "module"` in package.json, to start using es6 modules;
+
 ## Default Import
 
 - You can only export 1 default
