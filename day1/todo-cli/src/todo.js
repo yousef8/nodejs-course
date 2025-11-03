@@ -1,5 +1,6 @@
 import {Command} from 'commander';
 // const {Command} = require('commander');
+import {readTodos, writeTodos} from "./db.js"
 
 const program = new Command();
 
@@ -9,8 +10,32 @@ program.command("add")
   .alias("new")
   .description("Add a new todo item")
   .argument("<title>", "The task title")
-  .action((title) => {
-    console.log(`Added todo: ${title}`);
+  .action(async (title) => {
+    // read all existing todos
+    const todos = await readTodos();
+
+    // push new todo to the list
+    const newTodo = {
+      id: todos.length > 0 ? todos[todos.length - 1].id + 1 : 1,
+      title,
+      completed: false,
+      createdAt: new Date().toISOString(),
+    }
+    // save back to todos.json
+    todos.push(newTodo);
+
+    writeTodos(todos);
+
+    console.log("\n✅ Todo created successfully!");
+    console.log(`📌 ID: ${newTodo.id}`);
+    console.log(`📝 Title: ${newTodo.title}`);
+    if (newTodo.description) {
+      console.log(`📄 Description: ${newTodo.description}`);
+    }
+    console.log(
+      `⏰ Created: ${new Date(newTodo.createdAt).toLocaleDateString()}\n`
+    );
+
   });
 
 program.parse();
