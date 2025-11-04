@@ -4,6 +4,8 @@
   "description": "",
   "main": "src/todo.js",
   "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
     "todo": "node src/todo.js"
   },
   "keywords": [],
@@ -12,5 +14,8 @@
   "type": "module",
   "dependencies": {
     "commander": "^14.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
   }
 }
