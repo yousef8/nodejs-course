@@ -15,6 +15,7 @@ program
   .description("Add a new todo item")
   .argument("<title>", "The task title")
   .option("-d, --description <description>", "Description of the todo item")
+  .option("-c, --completed", "Mark the todo as completed")
   .action(async (title, options) => {
     // read all existing todos
     const todos = await readTodos();
@@ -26,6 +27,7 @@ program
       completed: false,
       createdAt: new Date().toISOString(),
       description: options.description || "",
+      completed: options.completed || false,
     };
     // save back to todos.json
     todos.push(newTodo);

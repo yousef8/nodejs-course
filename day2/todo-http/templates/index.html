@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List - Beautiful & Modern</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="header-content">
+        <h1 class="title">
+          <span class="title-icon">✨</span>
+          My Todo List
+        </h1>
+        <p class="subtitle">Stay organized and productive</p>
+      </div>
+      <div class="stats">
+        <div class="stat-card">
+          <div class="stat-number">{{totalCount}}</div>
+          <div class="stat-label">Total</div>
+        </div>
+        <div class="stat-card pending">
+          <div class="stat-number">{{pendingCount}}</div>
+          <div class="stat-label">Pending</div>
+        </div>
+        <div class="stat-card completed">
+          <div class="stat-number">{{completedCount}}</div>
+          <div class="stat-label">Done</div>
+        </div>
+      </div>
+    </header>
+
+    <main class="todos-grid">
+      {{todosContent}}
+    </main>
+
+    <footer class="footer">
+      <p>Manage your todos via CLI: <code>npm start new "Task name"</code></p>
+      <p class="footer-note">🚀 Built with vanilla Node.js HTTP server</p>
+    </footer>
+  </div>
+</body>
+</html>
