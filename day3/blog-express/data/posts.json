@@ -2,25 +2,40 @@
   {
     "id": 1,
     "title": "Introduction to Node.js",
-    "author": "John Doe",
     "content": "Node.js is a powerful JavaScript runtime built on Chrome's V8 engine. It allows developers to build scalable network applications using JavaScript on the server side.",
     "date": "2025-11-01",
-    "tags": ["nodejs", "javascript", "backend"]
+    "tags": [
+      "nodejs",
+      "javascript",
+      "backend"
+    ]
   },
   {
     "id": 2,
     "title": "Understanding Express.js",
-    "author": "Jane Smith",
     "content": "Express.js is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.",
     "date": "2025-11-03",
-    "tags": ["express", "nodejs", "web-framework"]
+    "tags": [
+      "express",
+      "nodejs",
+      "web-framework"
+    ]
   },
   {
     "id": 3,
     "title": "MVC Pattern in Web Development",
-    "author": "Bob Johnson",
     "content": "The Model-View-Controller (MVC) pattern is an architectural pattern that separates an application into three main logical components: the model, the view, and the controller.",
     "date": "2025-11-05",
-    "tags": ["mvc", "architecture", "design-patterns"]
+    "tags": [
+      "mvc",
+      "architecture",
+      "design-patterns"
+    ]
+  },
+  {
+    "id": 6,
+    "title": "patch post",
+    "content": "kdjfla sdfkasjd fljasl fasd",
+    "date": "2025-11-08T11:17:46.518Z"
   }
 ]
