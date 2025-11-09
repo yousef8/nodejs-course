@@ -6,11 +6,12 @@ import apiRoutes from "./routes/api.js";
 import mongoose from "mongoose";
 import morgan from "morgan";
 import { handleError } from "./middlewares/errorHandler.js";
+import "dotenv/config";
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT;
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
-const MONGO_URI = "mongodb://localhost:27017/blogDB";
+const MONGO_URI = process.env.MONGO_URI;
 
 mongoose.connect(MONGO_URI);
 
