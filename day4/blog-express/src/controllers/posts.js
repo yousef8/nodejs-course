@@ -22,6 +22,7 @@ export const createPost = async (req, res) => {
 };
 
 export const updatePost = async (req, res) => {
+  console.log("Updating post with data:", req.body);
   const postId = req.params.id;
   const updatedPost = await PostModel.findOneAndUpdate(
     { _id: postId },

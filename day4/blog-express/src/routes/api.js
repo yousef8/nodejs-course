@@ -5,6 +5,8 @@ import {
   updatePost,
   deletePost,
 } from "../controllers/posts.js";
+import { validateBody } from "../middlewares/validateBody.js";
+import * as z from "zod";
 
 const router = Router();
 
@@ -15,9 +17,23 @@ router.get("/", (req, res) => {
 
 router.get("/posts", getPosts);
 
-router.post("/posts", createPost);
+const postSchema = z.object({
+  title: z.string().min(1),
+  content: z.string().min(1),
+  tags: z.array(z.string()).optional().default([]),
+  createdAt: z.date().optional().default(new Date()),
+});
 
-router.patch("/posts/:id", updatePost);
+const updatePostSchema = z.object({
+  title: z.string().min(1).optional(),
+  content: z.string().min(1).optional(),
+  tags: z.array(z.string()).optional(),
+  createdAt: z.date().optional(),
+});
+
+router.post("/posts", validateBody(postSchema), createPost);
+
+router.patch("/posts/:id", validateBody(updatePostSchema), updatePost);
 
 router.delete("/posts/:id", deletePost);
 
