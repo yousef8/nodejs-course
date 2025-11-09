@@ -5,6 +5,7 @@ import viewRoutes from "./routes/views.js";
 import apiRoutes from "./routes/api.js";
 import mongoose from "mongoose";
 import morgan from "morgan";
+import { handleError } from "./middlewares/errorHandler.js";
 
 const app = express();
 const PORT = 3000;
@@ -20,6 +21,7 @@ app.use(express.json());
 
 app.use(morgan("dev"));
 
+// Handmade logging middleware
 // app.use((req, res, next) => {
 //   console.log(`${req.method} ${req.url}`);
 //   next();
@@ -27,6 +29,8 @@ app.use(morgan("dev"));
 
 app.use("/", viewRoutes);
 app.use("/api/v1", apiRoutes);
+
+app.use(handleError);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
