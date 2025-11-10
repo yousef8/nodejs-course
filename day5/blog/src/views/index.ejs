@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 2rem 0;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      text-align: center;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    nav {
+      background: white;
+      padding: 1rem;
+      margin-bottom: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #764ba2;
+    }
+
+    .posts-container {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .posts-container h2 {
+      color: #667eea;
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+    }
+
+    .post-card {
+      background: #f9f9f9;
+      border-left: 4px solid #667eea;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border-radius: 4px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .post-card:hover {
+      transform: translateX(5px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .post-card h3 {
+      color: #333;
+      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+    }
+
+    .post-card h3 a {
+      color: #333;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .post-card h3 a:hover {
+      color: #667eea;
+    }
+
+    .post-meta {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .post-meta span {
+      margin-right: 1rem;
+    }
+
+    .post-excerpt {
+      color: #555;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .post-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      background: #667eea;
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 15px;
+      font-size: 0.85rem;
+    }
+
+    .no-posts {
+      text-align: center;
+      padding: 3rem;
+      color: #666;
+    }
+
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 1.5rem 0;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>My Blog</h1>
+      <p>Exploring Node.js, Express, and MVC Pattern</p>
+    </div>
+  </header>
+
+  <div class="container">
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/sky">Sky</a></li>
+        <li><a href="/api/posts">API</a></li>
+      </ul>
+    </nav>
+
+    <div class="posts-container">
+      <h2>Latest Posts</h2>
+      
+      <% if (posts && posts.length > 0) { %>
+        <% posts.forEach(post => { %>
+          <div class="post-card">
+            <h3><a href="/post/<%= post.id %>"><%= post.title %></a></h3>
+            <div class="post-meta">
+              <span>👤 <%= post.author %></span>
+              <span>📅 <%= post.date %></span>
+            </div>
+            <p class="post-excerpt"><%= post.content.substring(0, 150) %>...</p>
+            <% if (post.tags && post.tags.length > 0) { %>
+              <div class="post-tags">
+                <% post.tags.forEach(tag => { %>
+                  <span class="tag">#<%= tag %></span>
+                <% }); %>
+              </div>
+            <% } %>
+          </div>
+        <% }); %>
+      <% } else { %>
+        <div class="no-posts">
+          <h3>No posts available</h3>
+          <p>Check back later for new content!</p>
+        </div>
+      <% } %>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 My Blog - Node.js MVC Demo</p>
+    </div>
+  </footer>
+</body>
+</html>

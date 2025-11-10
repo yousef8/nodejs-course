@@ -1,0 +1,54 @@
+import { PostModel } from "../models/post.js";
+import { UserModel } from "../models/user.js";
+
+export const getPosts = async (req, res) => {
+  const posts = await PostModel.find();
+  res.json({
+    message: "posts fetched successfully",
+    data: {
+      posts,
+    },
+  });
+};
+
+export const createPost = async (req, res) => {
+  const { title, content, date, tags } = req.body;
+  const newPost = await PostModel.create({
+    title,
+    content,
+    date,
+    tags,
+    author: req.userId,
+  });
+  res.status(201).json({
+    message: "Post created successfully",
+    data: {
+      post: newPost,
+    },
+  });
+};
+
+export const updatePost = async (req, res) => {
+  console.log("Updating post with data:", req.body);
+  const postId = req.params.id;
+  const updatedPost = await PostModel.findOneAndUpdate(
+    { _id: postId },
+    req.body,
+    { new: true }
+  );
+  if (!updatedPost) {
+    res.status(404).json({ message: "Post not found" });
+    return;
+  }
+
+  res.json({
+    message: "Post updated successfully",
+    data: { post: updatedPost },
+  });
+};
+
+export const deletePost = async (req, res) => {
+  const postId = req.params.id;
+  await PostModel.deleteOne({ _id: postId });
+  res.status(204).json({ message: `Deleted post ${postId} successfully` });
+};
