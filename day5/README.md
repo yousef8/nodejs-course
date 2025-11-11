@@ -55,13 +55,11 @@ Good for traditional web applications where the server maintains user state.
 
 ```eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNCwiZW1haWwiOiJ0ZXN0QGV4YW1wbGUuY29tIiwidXNlcm5hbWUiOiJncmVhdHVzZXJuYW1lIiwiaWF0IjoxNTE2MjM5MDIyfQ.jLonJDaUcBulZ9SWJ9_JVDFUf9qDjbW43lnwtCd96DY```
 
-
 👍 Pros:
 
 - Stateless: No need to store session information on the server.
 - Scalable: Easier to scale across multiple servers since no session data is stored server-side.
 - Compact: Can be easily transmitted via URL, POST parameters, or inside HTTP headers.
-
 
 👎 Cons:
 
@@ -91,6 +89,46 @@ Each part is a base64 encoded string.
 > You can very easily visit [jwt.io](https://jwt.io/) official website to decode and inspect JWTs.
 >
 > Make sure to never store sensitive information in the payload.
+
+### Production Grade Authentication Solutions
+
+#### [Keycloak](https://www.keycloak.org/)
+
+Keycloak is an open-source identity and access management solution for modern applications and services. It provides features such as single sign-on (SSO), social login, user federation, and more.
+
+It can be deployed on-premises (locally).
+
+#### [Clerk](https://clerk.com/)
+
+Clerk is a user management and authentication service that provides pre-built UI components and APIs for handling user authentication, registration, and profile management.
+
+It is a cloud-based service.
+
+#### [Auth0](https://auth0.com/)
+
+Auth0 is a flexible, drop-in solution to add authentication and authorization services to your applications. It supports various authentication methods, including social logins, enterprise logins, and multi-factor authentication.
+
+It is a cloud-based service.
+
+#### [Firebase Authentication](https://firebase.google.com/products/auth)
+
+Firebase Authentication provides backend services, easy-to-use SDKs, and ready-made UI libraries to authenticate users to your app. It supports various authentication methods, including email/password, phone authentication, and social logins.
+
+It is a cloud-based service.
+
+#### [Supabase Auth](https://supabase.com/docs/guides/auth)
+
+Supabase Auth is a part of the Supabase platform that provides authentication and user management features. It supports various authentication methods, including email/password, magic links, and social logins.
+
+It is a cloud-based service.
+
+Same as Firebase Auth.
+
+#### [NextAuth.js](https://next-auth.js.org/)
+
+NextAuth.js is a complete open-source authentication solution for Next.js applications. It provides built-in support for various authentication providers, including OAuth.
+
+It only provide Oauth authentication for Next.js applications, doesn't provide email/password authentication.
 
 ---
 
@@ -137,7 +175,7 @@ For requests that do not meet the criteria for simple requests, the browser send
 
 ### Setup CORS in Express.js
 
-```javascript   
+```javascript
 import express from 'express';
 import cors from 'cors';
 
