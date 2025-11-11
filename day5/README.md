@@ -138,8 +138,8 @@ For requests that do not meet the criteria for simple requests, the browser send
 ### Setup CORS in Express.js
 
 ```javascript   
-const express = require('express');
-const cors = require('cors');
+import express from 'express';
+import cors from 'cors';
 
 const app = express();
 
