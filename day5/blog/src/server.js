@@ -6,6 +6,7 @@ import apiRoutes from "./routes/api.js";
 import mongoose from "mongoose";
 import morgan from "morgan";
 import { handleError } from "./middlewares/errorHandler.js";
+import cors from "cors";
 import "dotenv/config";
 
 const app = express();
@@ -14,6 +15,8 @@ const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 const MONGO_URI = process.env.MONGO_URI;
 
 mongoose.connect(MONGO_URI);
+
+app.use(cors());
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "./views"));
